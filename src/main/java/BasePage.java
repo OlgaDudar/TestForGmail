@@ -12,13 +12,12 @@ public class BasePage  {
     public BasePage() {
 
        driver = WebDriverSingleton.getInstance();
-
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+       driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
     }
 
-    public void OpenSite(String _path){
-        driver.get(_path);
+    public void OpenSite(String path){
+        driver.get(path);
     }
 
     protected WebElement waitForElement(WebDriver driver, final By by){

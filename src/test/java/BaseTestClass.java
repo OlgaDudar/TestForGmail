@@ -1,3 +1,5 @@
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 
 import java.io.FileInputStream;
@@ -6,8 +8,13 @@ import java.util.Properties;
 
 public class BaseTestClass {
     @BeforeClass
-    public void setProp(){
-        System.setProperty("webdriver.chrome.driver", "\\drivers\\chromedriver.exe");
+    public void setProp() throws Exception {
+        System.setProperty("webdriver.chrome.driver", getDataProperties("driverPath"));
+    }
+
+    @AfterSuite
+    public void afterSuit(){
+       WebDriverSingleton.getInstance().quit();
     }
 
     public static String getDataProperties (String param) throws Exception {

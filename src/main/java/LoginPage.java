@@ -1,26 +1,31 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+
 
 public class LoginPage extends BasePage {
-    public WebDriver driver;
+
+    @FindBy(xpath = "//input[@class='whsOnd zHQkBf']")
+    private WebElement inpMail;
+    @FindBy(xpath = "//span[@class='RveJvd snByac']")
+    private WebElement btnNext;
+
+
 
     public LoginPage(){
-        driver = super.driver;
+        PageFactory.initElements(driver, this);
     }
 
-    public void setMail(String _mail){
-        WebElement inp_Mail = ((ChromeDriver)driver).findElementByXPath("//input[@class='whsOnd zHQkBf']");
-        inp_Mail.sendKeys(_mail);
-        WebElement btn_Next = ((ChromeDriver) driver).findElementByXPath("//span[@class='RveJvd snByac']");
-        btn_Next.click();
+    public void setMail(String mail){
+        inpMail.sendKeys(mail);
+        btnNext.click();
     }
 
     public void setPassword(String pass){
         WebElement inpPass = waitForElement(driver, By.xpath("//input[@type='password']"));
         inpPass.sendKeys(pass);
-        WebElement btnNext = ((ChromeDriver) driver).findElementByXPath("//span[@class='RveJvd snByac']");
         btnNext.click();
     }
 
