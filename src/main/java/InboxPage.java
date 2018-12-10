@@ -1,4 +1,3 @@
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,10 +9,8 @@ public class InboxPage extends BasePage{
 
     @FindBy(xpath = "//div[@class='T-I J-J5-Ji T-I-KE L3']")
     private WebElement btnNewMail;
-    @FindBy(xpath = "//form[@class='bAs']")
-    private WebElement formElement;
-    //@FindBy(xpath = "//textarea[@class='vO']")
-    //private WebElement toWhomtxt;
+    @FindBy(xpath = "//form[@class='bAs']//textarea[@class='vO']")
+    private WebElement toWhomtxt;
     @FindBy(xpath = "//div[@class='J-J5-Ji btA']")
     private WebElement btnSend;
     @FindBy(xpath = "//div[@class='Am Al editable LW-avf']")
@@ -36,7 +33,6 @@ public class InboxPage extends BasePage{
     }
 
     public void setAdress(String to){
-        WebElement toWhomtxt = formElement.findElement(By.xpath(("//textarea[@class='vO']")));
         toWhomtxt.click();
         toWhomtxt.sendKeys(to);
     }

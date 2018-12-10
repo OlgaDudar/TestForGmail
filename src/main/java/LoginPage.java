@@ -11,7 +11,7 @@ public class LoginPage extends BasePage {
     private WebElement inpMail;
     @FindBy(xpath = "//span[@class='RveJvd snByac']")
     private WebElement btnNext;
-
+    By passLocator = By.xpath("//input[@type='password']");
 
 
     public LoginPage(){
@@ -24,7 +24,7 @@ public class LoginPage extends BasePage {
     }
 
     public void setPassword(String pass){
-        WebElement inpPass = waitForElement(driver, By.xpath("//input[@type='password']"));
+        WebElement inpPass = waitForElement(driver, passLocator);
         inpPass.sendKeys(pass);
         btnNext.click();
     }
