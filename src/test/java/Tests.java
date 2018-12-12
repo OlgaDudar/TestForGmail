@@ -3,9 +3,6 @@ import org.testng.annotations.Test;
 
 public class Tests extends BaseTestClass {
 
-    private Tests(){};
-
-
     @Test (description = "Login to Gmail and send message using Page Object Model")
     public void loginSendMail() throws Exception {
         LoginPage loginPage = new LoginPage();
