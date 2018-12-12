@@ -14,6 +14,10 @@ public class TextField extends CustomElement {
         wrappedElement.sendKeys(text);
     }
 
+    public void click(){
+        wrappedElement.click();
+    }
+
     public void waitForElement() {
         Boolean staleElement = true;
         int RETRY_COUNT = 100;

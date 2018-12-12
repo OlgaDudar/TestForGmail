@@ -8,15 +8,11 @@ import org.openqa.selenium.support.pagefactory.DefaultFieldDecorator;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 import com.olga.elements.Element;
 import com.olga.elements.impl.DefaultElementFactory;
-import com.olga.Container;
-import com.olga.ContainerFactory;
-import com.olga.DefaultContainerFactory;
 
 import java.lang.reflect.Field;
 
 public class ExtendedFieldDecorator extends DefaultFieldDecorator {
     private ElementFactory elementFactory = new DefaultElementFactory();
-    private ContainerFactory containerFactory = new DefaultContainerFactory();
 
     public ExtendedFieldDecorator(final SearchContext searchContext) {
         super(new DefaultElementLocatorFactory(searchContext));
@@ -24,9 +20,6 @@ public class ExtendedFieldDecorator extends DefaultFieldDecorator {
 
     @Override
     public Object decorate(final ClassLoader loader, final Field field) {
-        if (Container.class.isAssignableFrom(field.getType())) {
-            return decorateContainer(loader, field);
-        }
         if (Element.class.isAssignableFrom(field.getType())) {
             return decorateElement(loader, field);
         }
@@ -35,18 +28,11 @@ public class ExtendedFieldDecorator extends DefaultFieldDecorator {
 
     private Object decorateElement(final ClassLoader loader, final Field field) {
         final WebElement wrappedElement = proxyForLocator(loader, createLocator(field));
-        return elementFactory.create((Class<? extends Element>) field.getType(), wrappedElement);
+        return elementFactory.create((Class<Element>) field.getType(), wrappedElement);
     }
 
     private ElementLocator createLocator(final Field field) {
         return factory.createLocator(field);
     }
 
-    private Object decorateContainer(final ClassLoader loader, final Field field) {
-        final WebElement wrappedElement = proxyForLocator(loader, createLocator(field));
-        final Container container = containerFactory.create((Class<? extends Container>) field.getType(), wrappedElement);
-
-        PageFactory.initElements(new ExtendedFieldDecorator(wrappedElement), container);
-        return container;
-    }
 }

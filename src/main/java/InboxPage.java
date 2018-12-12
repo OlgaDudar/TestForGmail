@@ -1,3 +1,5 @@
+import com.olga.elements.impl.Button;
+import com.olga.elements.impl.TextField;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -9,45 +11,37 @@ public class InboxPage extends BasePage{
     boolean msgSend;
 
     @FindBy(xpath = "//div[@class='T-I J-J5-Ji T-I-KE L3']")
-    private WebElement btnNewMail;
+    private Button btnNewMail;
     @FindBy(xpath = "//form[@class='bAs']")
     private WebElement formElement;
-    //@FindBy(xpath = "//textarea[@class='vO']")
-    //private WebElement toWhomtxt;
+    @FindBy(xpath = "//textarea[@class='vO']")
+    private TextField toWhomtxt;
     @FindBy(xpath = "//div[@class='J-J5-Ji btA']")
-    private WebElement btnSend;
+    private Button btnSend;
     @FindBy(xpath = "//div[@class='Am Al editable LW-avf']")
-    private WebElement Msg;
+    private TextField Msg;
     @FindBy(xpath = "//div[@class='bBe']")
     private WebElement msgBoxSend;
-
-    public InboxPage(WebDriver driver){
-        ;
-    }
-
-
-    public InboxPage(){
-        PageFactory.initElements(driver, this);
-    }
-
 
     public void createNewMail(){
         btnNewMail.click();
     }
 
-    public void setAdress(String to){
-        WebElement toWhomtxt = formElement.findElement(By.xpath(("//textarea[@class='vO']")));
+    public void setAddress(String to){
         toWhomtxt.click();
-        toWhomtxt.sendKeys(to);
+        toWhomtxt.type(to);
     }
 
-    public void setMassage(String txt){
-        Msg.sendKeys(txt + Keys.TAB);
+    public void setMessage(String txt){
+        Msg.type(txt + Keys.TAB);
 
     }
-    public void sendMassage(){
+
+    public void sendMail(){
         btnSend.click();
-        msgSend = msgBoxSend.isDisplayed();
+    }
 
+    public boolean sendMessagePopupDisplayed(){
+        return msgBoxSend.isDisplayed();
     }
 }

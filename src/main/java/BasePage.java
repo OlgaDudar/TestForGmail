@@ -1,7 +1,10 @@
+import com.olga.ExtendedFieldDecorator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+
 import java.util.concurrent.TimeUnit;
 
 public class BasePage  {
@@ -14,6 +17,7 @@ public class BasePage  {
        driver = WebDriverSingleton.getInstance();
        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
+        init();
     }
 
     public void OpenSite(String path){
@@ -36,5 +40,9 @@ public class BasePage  {
             }
         }
         return element;
+    }
+
+    private void init(){
+        PageFactory.initElements(new ExtendedFieldDecorator(driver), this);
     }
 }
