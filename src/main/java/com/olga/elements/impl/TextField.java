@@ -2,33 +2,18 @@ package com.olga.elements.impl;
 
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
-import com.olga.elements.TextField;
 
-public class TextFieldImpl extends AbstractElement implements TextField {
-    protected TextFieldImpl(final WebElement wrappedElement) {
+public class TextField extends CustomElement {
 
+    protected TextField(final WebElement wrappedElement) {
         super(wrappedElement);
     }
 
-    @Override
     public void type(final String text) {
         waitForElement();
         wrappedElement.sendKeys(text);
     }
 
-    @Override
-    public void clear() {
-        wrappedElement.clear();
-    }
-
-    @Override
-    public void clearAndType(final String text) {
-
-        clear();
-        type(text);
-    }
-
-    @Override
     public void waitForElement() {
         Boolean staleElement = true;
         int RETRY_COUNT = 100;
@@ -42,5 +27,10 @@ public class TextFieldImpl extends AbstractElement implements TextField {
                 staleElement = true;
             }
         }
+    }
+
+    @Override
+    public boolean isDisplayed() {
+        return false;
     }
 }

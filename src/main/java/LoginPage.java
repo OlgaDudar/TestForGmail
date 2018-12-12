@@ -1,7 +1,4 @@
 import com.olga.ExtendedFieldDecorator;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import com.olga.elements.impl.*;
@@ -11,13 +8,13 @@ import com.olga.elements.impl.*;
 public class LoginPage extends BasePage {
 
     @FindBy(xpath = "//input[@class='whsOnd zHQkBf']")
-    private TextFieldImpl inpMail;
+    private TextField inpMail;
 
     @FindBy(xpath = "//input[@type='password']")
-    private TextFieldImpl inpPass;
+    private TextField inpPass;
 
     @FindBy(xpath = "//span[@class='RveJvd snByac']")
-    private ButtonImpl btnNext;
+    private Button btnNext;
 
 
 
