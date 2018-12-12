@@ -11,8 +11,11 @@ import com.olga.elements.impl.*;
 public class LoginPage extends BasePage {
 
     @FindBy(xpath = "//input[@class='whsOnd zHQkBf']")
-//    private WebElement inpMail;
     private TextFieldImpl inpMail;
+
+    @FindBy(xpath = "//input[@type='password']")
+    private TextFieldImpl inpPass;
+
     @FindBy(xpath = "//span[@class='RveJvd snByac']")
     private ButtonImpl btnNext;
 
@@ -29,8 +32,9 @@ public class LoginPage extends BasePage {
     }
 
     public void setPassword(String pass){
-        WebElement inpPass = waitForElement(driver, By.xpath("//input[@type='password']"));
-        inpPass.sendKeys(pass);
+//        WebElement inpPass = waitForElement(driver, By.xpath("//input[@type='password']"));
+
+        inpPass.type(pass);
         btnNext.click();
     }
 
