@@ -1,4 +1,4 @@
-package com.olga.elements;
+package core.elements;
 
 public interface Element {
     boolean isDisplayed();

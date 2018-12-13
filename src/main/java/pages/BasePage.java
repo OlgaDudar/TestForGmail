@@ -1,4 +1,7 @@
-import com.olga.ExtendedFieldDecorator;
+package pages;
+
+import core.ExtendedFieldDecorator;
+import core.driver.WebDriverSingleton;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;

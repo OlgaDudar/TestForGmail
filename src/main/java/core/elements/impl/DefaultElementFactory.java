@@ -1,8 +1,8 @@
-package com.olga.elements.impl;
+package core.elements.impl;
 
+import core.ElementFactory;
+import core.elements.Element;
 import org.openqa.selenium.WebElement;
-import com.olga.ElementFactory;
-import com.olga.elements.Element;
 
 import java.lang.reflect.InvocationTargetException;
 

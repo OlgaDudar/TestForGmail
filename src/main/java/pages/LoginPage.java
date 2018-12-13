@@ -1,8 +1,8 @@
-import com.olga.ExtendedFieldDecorator;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import com.olga.elements.impl.*;
+package pages;
 
+import core.elements.impl.Button;
+import core.elements.impl.TextField;
+import org.openqa.selenium.support.FindBy;
 
 
 public class LoginPage extends BasePage {

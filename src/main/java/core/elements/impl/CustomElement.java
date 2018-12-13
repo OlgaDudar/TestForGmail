@@ -1,7 +1,7 @@
-package com.olga.elements.impl;
+package core.elements.impl;
 
+import core.elements.Element;
 import org.openqa.selenium.WebElement;
-import com.olga.elements.Element;
 
 abstract class CustomElement implements Element {
     protected final WebElement wrappedElement;

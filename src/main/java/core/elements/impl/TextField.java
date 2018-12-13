@@ -1,4 +1,4 @@
-package com.olga.elements.impl;
+package core.elements.impl;
 
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;

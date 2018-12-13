@@ -1,13 +1,12 @@
-package com.olga;
+package core;
 
+import core.elements.Element;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.DefaultElementLocatorFactory;
 import org.openqa.selenium.support.pagefactory.DefaultFieldDecorator;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
-import com.olga.elements.Element;
-import com.olga.elements.impl.DefaultElementFactory;
+import core.elements.impl.DefaultElementFactory;
 
 import java.lang.reflect.Field;
 

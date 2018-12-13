@@ -1,11 +1,10 @@
-import com.olga.elements.impl.Button;
-import com.olga.elements.impl.TextField;
-import org.openqa.selenium.By;
+package pages;
+
+import core.elements.impl.Button;
+import core.elements.impl.TextField;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 public class InboxPage extends BasePage{
     boolean msgSend;

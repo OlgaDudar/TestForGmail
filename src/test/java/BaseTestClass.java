@@ -1,4 +1,4 @@
-import org.testng.annotations.AfterClass;
+import core.driver.WebDriverSingleton;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 
