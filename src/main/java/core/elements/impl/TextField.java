@@ -33,8 +33,4 @@ public class TextField extends CustomElement {
         }
     }
 
-    @Override
-    public boolean isDisplayed() {
-        return false;
-    }
 }

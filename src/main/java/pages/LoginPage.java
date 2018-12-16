@@ -16,6 +16,8 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//span[@class='RveJvd snByac']")
     private Button btnNext;
 
+
+
     public void setMail(String mail){
         inpMail.type(mail);
         btnNext.click();

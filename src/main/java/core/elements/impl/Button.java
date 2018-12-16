@@ -11,8 +11,5 @@ public class Button extends CustomElement {
         wrappedElement.click();
     }
 
-    @Override
-    public boolean isDisplayed() {
-        return false;
-    }
+
 }

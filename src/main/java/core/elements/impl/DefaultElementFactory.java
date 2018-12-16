@@ -1,6 +1,6 @@
 package core.elements.impl;
 
-import core.ElementFactory;
+import core.elements.ElementFactory;
 import core.elements.Element;
 import org.openqa.selenium.WebElement;
 

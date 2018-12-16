@@ -1,3 +1,5 @@
+import core.model.Message;
+import core.model.User;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.InboxPage;
@@ -7,14 +9,17 @@ public class Tests extends BaseTestClass {
 
     @Test (description = "Login to Gmail and send message using Page Object Model")
     public void loginSendMail() throws Exception {
+        User user = new User(getDataProperties("login"), getDataProperties("password"));
+        Message msg = new Message(getDataProperties("sendTo"),"", "Hello");
+
         LoginPage loginPage = new LoginPage();
         loginPage.OpenSite(getDataProperties("site"));
-        loginPage.setMail(getDataProperties("login"));
-        loginPage.setPassword(getDataProperties("password"));
+        loginPage.setMail(user.getLogin());
+        loginPage.setPassword(user.getPassword());
         InboxPage inBox = new InboxPage();
         inBox.createNewMail();
-        inBox.setAddress(getDataProperties("sendTo"));
-        inBox.setMessage("Hello");
+        inBox.setAddress(msg.getToWhom());
+        inBox.setMessage(msg.getMsgBody());
         inBox.sendMail();
         Assert.assertTrue(inBox.sendMessagePopupDisplayed(), " Mail was not sent");
     }

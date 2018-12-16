@@ -1,6 +1,5 @@
-package core;
+package core.elements;
 
-import core.elements.Element;
 import org.openqa.selenium.WebElement;
 
 public interface ElementFactory {

@@ -1,6 +1,7 @@
 package core;
 
 import core.elements.Element;
+import core.elements.ElementFactory;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.DefaultElementLocatorFactory;
@@ -11,7 +12,7 @@ import core.elements.impl.DefaultElementFactory;
 import java.lang.reflect.Field;
 
 public class ExtendedFieldDecorator extends DefaultFieldDecorator {
-    private ElementFactory elementFactory = new DefaultElementFactory();
+    private ElementFactory elementFactory = (ElementFactory) new DefaultElementFactory();
 
     public ExtendedFieldDecorator(final SearchContext searchContext) {
         super(new DefaultElementLocatorFactory(searchContext));
