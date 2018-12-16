@@ -36,6 +36,7 @@ public class InboxPage extends BasePage{
 
     }
 
+
     public void sendMail(){
         btnSend.click();
     }
