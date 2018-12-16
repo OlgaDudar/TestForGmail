@@ -32,7 +32,6 @@ public class ExtendedFieldDecorator extends DefaultFieldDecorator {
     }
 
     private ElementLocator createLocator(final Field field) {
-
         return factory.createLocator(field);
     }
 

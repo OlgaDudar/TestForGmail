@@ -19,5 +19,4 @@ public class User {
     void setPassword(String pass){
         this.password = pass;
     }
-
 }

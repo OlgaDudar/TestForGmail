@@ -33,9 +33,7 @@ public class InboxPage extends BasePage{
 
     public void setMessage(String txt){
         Msg.type(txt + Keys.TAB);
-
     }
-
 
     public void sendMail(){
         btnSend.click();

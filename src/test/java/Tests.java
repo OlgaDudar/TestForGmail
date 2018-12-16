@@ -7,7 +7,6 @@ public class Tests extends BaseTestClass {
 
     @Test (description = "Login to Gmail and send message using Page Object Model")
     public void loginSendMailTest() {
-
         LoginPage loginPage = new LoginPage();
         loginPage.OpenSite(pageUrl);
         loginPage.setMail(user.getLogin());
@@ -22,7 +21,6 @@ public class Tests extends BaseTestClass {
 
     @Test (description = "Open Inbox page and send message")
     public void openInboxPageTest()  {
-
         LoginPage loginPage = new LoginPage();
         loginPage.OpenSite(pageUrl);
         loginPage.setMail(user.getLogin());

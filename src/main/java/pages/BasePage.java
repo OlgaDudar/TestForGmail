@@ -9,11 +9,9 @@ import java.util.concurrent.TimeUnit;
 
 public class BasePage  {
 
-    public WebDriver driver;
-
+    private WebDriver driver;
 
     public BasePage() {
-
         driver = WebDriverSingleton.getInstance();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         init();
@@ -24,9 +22,6 @@ public class BasePage  {
     }
 
     private void init(){
-
         PageFactory.initElements(new ExtendedFieldDecorator(driver), this);
     }
-
-
 }

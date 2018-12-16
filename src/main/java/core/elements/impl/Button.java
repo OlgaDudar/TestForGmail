@@ -7,7 +7,6 @@ public class Button extends CustomElement {
     }
 
     public void click(){
-
         wrappedElement.click();
     }
 
