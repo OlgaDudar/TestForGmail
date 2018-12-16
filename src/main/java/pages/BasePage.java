@@ -27,4 +27,6 @@ public class BasePage  {
 
         PageFactory.initElements(new ExtendedFieldDecorator(driver), this);
     }
+
+
 }

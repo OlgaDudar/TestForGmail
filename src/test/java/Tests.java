@@ -9,11 +9,7 @@ public class Tests extends BaseTestClass {
     public void loginSendMailTest() {
 
         LoginPage loginPage = new LoginPage();
-        try {
-            loginPage.OpenSite(getDataProperties("site"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        loginPage.OpenSite(pageUrl);
         loginPage.setMail(user.getLogin());
         loginPage.setPassword(user.getPassword());
         InboxPage inBox = new InboxPage();
@@ -24,15 +20,13 @@ public class Tests extends BaseTestClass {
         Assert.assertTrue(inBox.sendMessagePopupDisplayed(), " Mail was not sent");
     }
 
-    @Test (dependsOnMethods = "loginSendMailTest", alwaysRun = true,  timeOut = 1000, description = "Open Inbox page and send message")
+    @Test (description = "Open Inbox page and send message")
     public void openInboxPageTest()  {
 
         LoginPage loginPage = new LoginPage();
-        try {
-            loginPage.OpenSite(getDataProperties("site"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        loginPage.OpenSite(pageUrl);
+        loginPage.setMail(user.getLogin());
+        loginPage.setPassword(user.getPassword());
         InboxPage inBox = new InboxPage();
         inBox.createNewMail();
         inBox.setAddress(msg.getToWhom());

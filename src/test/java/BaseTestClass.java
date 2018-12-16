@@ -1,18 +1,17 @@
 import core.driver.WebDriverSingleton;
 import core.model.Message;
 import core.model.User;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.*;
 
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.Properties;
 
 public class BaseTestClass {
+
     User user = null;
     Message msg = null;
+    String pageUrl = null;
 
     @BeforeClass
     public void setProp() throws Exception {
@@ -20,11 +19,8 @@ public class BaseTestClass {
 
         try {
             user = new User(getDataProperties("login"), getDataProperties("password"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
             msg = new Message(getDataProperties("sendTo"),"", "Hello");
+            pageUrl = getDataProperties("site");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -32,16 +28,12 @@ public class BaseTestClass {
     }
     @BeforeTest
     public void beforeTest(){
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+      ;
     }
 
-    @AfterClass
+    @AfterMethod
     public void afterSuit(){
-       WebDriverSingleton.getInstance().quit();
+        WebDriverSingleton.closeDriver();
     }
 
     public static String getDataProperties (String param) throws Exception {
