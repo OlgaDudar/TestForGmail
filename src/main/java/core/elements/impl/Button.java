@@ -1,5 +1,4 @@
 package core.elements.impl;
-
 import org.openqa.selenium.WebElement;
 
 public class Button extends CustomElement {
@@ -8,6 +7,7 @@ public class Button extends CustomElement {
     }
 
     public void click(){
+
         wrappedElement.click();
     }
 

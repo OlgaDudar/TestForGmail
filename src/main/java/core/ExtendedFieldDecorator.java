@@ -12,7 +12,7 @@ import core.elements.impl.DefaultElementFactory;
 import java.lang.reflect.Field;
 
 public class ExtendedFieldDecorator extends DefaultFieldDecorator {
-    private ElementFactory elementFactory = (ElementFactory) new DefaultElementFactory();
+    private ElementFactory elementFactory = new DefaultElementFactory();
 
     public ExtendedFieldDecorator(final SearchContext searchContext) {
         super(new DefaultElementLocatorFactory(searchContext));
@@ -32,6 +32,7 @@ public class ExtendedFieldDecorator extends DefaultFieldDecorator {
     }
 
     private ElementLocator createLocator(final Field field) {
+
         return factory.createLocator(field);
     }
 

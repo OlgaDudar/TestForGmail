@@ -2,7 +2,6 @@ package pages;
 
 import core.ExtendedFieldDecorator;
 import core.driver.WebDriverSingleton;
-import core.elements.impl.TextField;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
