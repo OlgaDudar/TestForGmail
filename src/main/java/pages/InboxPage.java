@@ -1,6 +1,7 @@
 package pages;
 
 import core.elements.impl.Button;
+import core.elements.impl.MessageBox;
 import core.elements.impl.TextField;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -20,7 +21,11 @@ public class InboxPage extends BasePage{
     @FindBy(xpath = "//div[@class='Am Al editable LW-avf']")
     private TextField Msg;
     @FindBy(xpath = "//div[@class='bBe']")
-    private WebElement msgBoxSend;
+    private MessageBox msgBoxSend;
+    @FindBy(xpath = "//span[@class='bAq']")
+    private WebElement msgBoxText;
+
+
 
     public void createNewMail(){
         btnNewMail.click();
@@ -39,7 +44,13 @@ public class InboxPage extends BasePage{
         btnSend.click();
     }
 
-    public boolean sendMessagePopupDisplayed(){
+    public boolean sendMessagePopupDisplayed() {
+        msgBoxSend.waitForSend();
+        System.out.println(msgBoxText.getText());
+        if ((msgBoxText.getText() == "Лист надіслано.")||(msgBoxText.getText() == "Message sent."))
+            return msgBoxSend.isDisplayed();
         return msgBoxSend.isDisplayed();
+
     }
+
 }

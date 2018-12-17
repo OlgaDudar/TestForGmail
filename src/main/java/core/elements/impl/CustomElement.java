@@ -15,4 +15,6 @@ abstract class CustomElement implements Element {
     public boolean isDisplayed() {
         return wrappedElement.isDisplayed();
     }
+
+   // protected abstract String getText();
 }
