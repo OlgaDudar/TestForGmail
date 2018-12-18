@@ -16,5 +16,4 @@ abstract class CustomElement implements Element {
         return wrappedElement.isDisplayed();
     }
 
-   // protected abstract String getText();
 }

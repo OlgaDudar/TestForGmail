@@ -3,6 +3,7 @@ package pages;
 import core.ExtendedFieldDecorator;
 import core.driver.WebDriverSingleton;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.concurrent.TimeUnit;
@@ -15,6 +16,11 @@ public class BasePage  {
         driver = WebDriverSingleton.getInstance();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         init();
+    }
+
+    public boolean waitForElement(WebElement elem){
+//        boolean
+        return false;
     }
 
     public void OpenSite(String path){

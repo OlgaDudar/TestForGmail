@@ -1,6 +1,6 @@
 package core.elements.impl;
-
 import org.openqa.selenium.WebElement;
+
 
 public class MessageBox extends CustomElement {
 
@@ -13,11 +13,4 @@ public class MessageBox extends CustomElement {
     }
 
 
-    public void waitForSend(){
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 }

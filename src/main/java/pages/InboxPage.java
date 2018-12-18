@@ -3,6 +3,7 @@ package pages;
 import core.elements.impl.Button;
 import core.elements.impl.MessageBox;
 import core.elements.impl.TextField;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -45,12 +46,33 @@ public class InboxPage extends BasePage{
     }
 
     public boolean sendMessagePopupDisplayed() {
-        msgBoxSend.waitForSend();
-        System.out.println(msgBoxText.getText());
-        if ((msgBoxText.getText() == "Лист надіслано.")||(msgBoxText.getText() == "Message sent."))
-            return msgBoxSend.isDisplayed();
+       this.waiter();
         return msgBoxSend.isDisplayed();
 
     }
+    public boolean waiter() {
 
+        int COUNTER = 0;
+        while (true){
+            System.out.println("Count: " + COUNTER);
+            if (COUNTER == 5) {
+                return false;
+            }
+            WebElement res = msgBoxText;
+            System.out.println(res.getText());
+            String messageText = res.getText();
+            if ((messageText.equals("Лист надіслано.")) || (messageText.equals("Message sent."))) {
+                return true;
+            }
+            else {
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                COUNTER++;
+            }
+        }
+    }
 }
+
