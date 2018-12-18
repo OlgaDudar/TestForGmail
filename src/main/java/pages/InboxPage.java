@@ -29,6 +29,7 @@ public class InboxPage extends BasePage{
 
 
     public void createNewMail(){
+
         btnNewMail.click();
     }
 
@@ -38,41 +39,20 @@ public class InboxPage extends BasePage{
     }
 
     public void setMessage(String txt){
+
         Msg.type(txt + Keys.TAB);
     }
 
     public void sendMail(){
+
         btnSend.click();
     }
 
     public boolean sendMessagePopupDisplayed() {
-       this.waiter();
+        msgBoxSend.waitForSend(msgBoxText);
         return msgBoxSend.isDisplayed();
 
     }
-    public boolean waiter() {
 
-        int COUNTER = 0;
-        while (true){
-            System.out.println("Count: " + COUNTER);
-            if (COUNTER == 5) {
-                return false;
-            }
-            WebElement res = msgBoxText;
-            System.out.println(res.getText());
-            String messageText = res.getText();
-            if ((messageText.equals("Лист надіслано.")) || (messageText.equals("Message sent."))) {
-                return true;
-            }
-            else {
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                COUNTER++;
-            }
-        }
-    }
 }
 

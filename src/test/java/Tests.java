@@ -32,4 +32,5 @@ public class Tests extends BaseTestClass {
         inBox.sendMail();
         Assert.assertFalse(inBox.sendMessagePopupDisplayed(), " Mail was not sent");
     }
+
 }
