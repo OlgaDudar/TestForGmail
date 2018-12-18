@@ -2,7 +2,6 @@ import core.driver.WebDriverSingleton;
 import core.model.Message;
 import core.model.User;
 import org.testng.annotations.*;
-
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.Properties;

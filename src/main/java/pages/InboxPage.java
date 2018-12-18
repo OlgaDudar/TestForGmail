@@ -3,7 +3,6 @@ package pages;
 import core.elements.impl.Button;
 import core.elements.impl.MessageBox;
 import core.elements.impl.TextField;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

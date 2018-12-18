@@ -1,7 +1,5 @@
 package core.elements.impl;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-
 
 public class MessageBox extends CustomElement {
 
