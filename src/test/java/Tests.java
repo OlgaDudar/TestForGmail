@@ -19,6 +19,7 @@ public class Tests extends BaseTestClass {
         Assert.assertTrue(inBox.sendMessagePopupDisplayed(), " Mail was not sent");
     }
 
+
     @Test (description = "Open Inbox page and send message")
     public void openInboxPageTest()  {
         LoginPage loginPage = new LoginPage();

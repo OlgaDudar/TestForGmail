@@ -1,7 +1,7 @@
 package pages;
 
 import core.elements.impl.Button;
-import core.elements.impl.MessageBox;
+import core.elements.impl.PopUp;
 import core.elements.impl.TextField;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -21,7 +21,7 @@ public class InboxPage extends BasePage{
     @FindBy(xpath = "//div[@class='Am Al editable LW-avf']")
     private TextField Msg;
     @FindBy(xpath = "//div[@class='bBe']")
-    private MessageBox msgBoxSend;
+    private PopUp popUp;
     @FindBy(xpath = "//span[@class='bAq']")
     private WebElement msgBoxText;
 
@@ -48,8 +48,8 @@ public class InboxPage extends BasePage{
     }
 
     public boolean sendMessagePopupDisplayed() {
-        msgBoxSend.waitForSend(msgBoxText);
-        return msgBoxSend.isDisplayed();
+        popUp.waitForSend(msgBoxText);
+        return popUp.isDisplayed();
 
     }
 

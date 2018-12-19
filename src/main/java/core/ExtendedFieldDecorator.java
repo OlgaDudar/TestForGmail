@@ -1,5 +1,4 @@
 package core;
-
 import core.elements.Element;
 import core.elements.ElementFactory;
 import org.openqa.selenium.SearchContext;

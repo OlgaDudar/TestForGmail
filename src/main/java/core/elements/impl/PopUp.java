@@ -1,9 +1,9 @@
 package core.elements.impl;
 import org.openqa.selenium.WebElement;
 
-public class MessageBox extends CustomElement {
+public class PopUp extends CustomElement {
 
-    protected MessageBox(WebElement wrappedElement) {
+    protected PopUp(WebElement wrappedElement) {
 
         super(wrappedElement);
     }
