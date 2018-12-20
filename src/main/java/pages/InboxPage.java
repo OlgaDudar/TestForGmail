@@ -1,11 +1,14 @@
 package pages;
 
+import core.driver.WebDriverSingleton;
 import core.elements.impl.Button;
 import core.elements.impl.PopUp;
 import core.elements.impl.TextField;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class InboxPage extends BasePage{
     boolean msgSend;
@@ -23,7 +26,7 @@ public class InboxPage extends BasePage{
     @FindBy(xpath = "//div[@class='bBe']")
     private PopUp popUp;
     @FindBy(xpath = "//span[@class='bAq']")
-    private WebElement msgBoxText;
+    private WebElement popUpText;
 
 
 
@@ -48,7 +51,10 @@ public class InboxPage extends BasePage{
     }
 
     public boolean sendMessagePopupDisplayed() {
-        popUp.waitForSend(msgBoxText);
+       // popUp.waitForSend(msgBoxText);
+        // return popUp.isDisplayed();
+        Wait<WebDriver> wait = new WebDriverWait(WebDriverSingleton.getInstance(), 10).ignoring(StaleElementReferenceException.class, ElementNotVisibleException.class);
+        wait.until(ExpectedConditions.textToBePresentInElement(popUpText, "Лист надіслано."));
         return popUp.isDisplayed();
 
     }

@@ -1,8 +1,8 @@
 package core.model;
 
 public class User {
-    private String login;
-    private String password;
+    public String login;
+    public String password;
     public User(String loginUser, String passwordUser){
         login = loginUser;
         password = passwordUser;

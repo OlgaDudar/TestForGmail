@@ -2,9 +2,8 @@ import core.driver.WebDriverSingleton;
 import core.model.Message;
 import core.model.User;
 import org.testng.annotations.*;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
-import java.util.Properties;
+
+import static core.DataProperties.getDataProperties;
 
 public class BaseTestClass {
 
@@ -13,8 +12,12 @@ public class BaseTestClass {
     String pageUrl = null;
 
     @BeforeClass
-    public void setProp() throws Exception {
-        System.setProperty("webdriver.chrome.driver", getDataProperties("driverPath"));
+    public void setProp()  {
+        try {
+            System.setProperty("webdriver.chrome.driver", getDataProperties("driverPath"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         try {
             user = new User(getDataProperties("login"), getDataProperties("password"));
@@ -35,10 +38,4 @@ public class BaseTestClass {
         WebDriverSingleton.closeDriver();
     }
 
-    public static String getDataProperties (String param) throws Exception {
-        Properties props;
-        props = new Properties();
-        props.load(new InputStreamReader(new FileInputStream("system.properties")));
-        return props.getProperty(param);
-    }
 }

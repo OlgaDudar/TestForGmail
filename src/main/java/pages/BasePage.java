@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 public class BasePage  {
 
-    private WebDriver driver;
+    public WebDriver driver;
 
     public BasePage() {
         driver = WebDriverSingleton.getInstance();
