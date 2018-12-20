@@ -19,6 +19,8 @@ public class InboxPage extends BasePage{
     private WebElement formElement;
     @FindBy(xpath = "//textarea[@class='vO']")
     private TextField toWhomtxt;
+    @FindBy(xpath = "//input[@class='aoT']")
+    private TextField subject;
     @FindBy(xpath = "//div[@class='J-J5-Ji btA']")
     private Button btnSend;
     @FindBy(xpath = "//div[@class='Am Al editable LW-avf']")
@@ -36,9 +38,13 @@ public class InboxPage extends BasePage{
     }
 
     public void setAddress(String to){
-        toWhomtxt.click();
         toWhomtxt.type(to);
     }
+
+    public void setSubject(String sub){
+        subject.type(sub);
+    }
+
 
     public void setMessage(String txt){
 
@@ -51,8 +57,7 @@ public class InboxPage extends BasePage{
     }
 
     public boolean sendMessagePopupDisplayed() {
-       // popUp.waitForSend(msgBoxText);
-        // return popUp.isDisplayed();
+
         Wait<WebDriver> wait = new WebDriverWait(WebDriverSingleton.getInstance(), 10).ignoring(StaleElementReferenceException.class, ElementNotVisibleException.class);
         wait.until(ExpectedConditions.textToBePresentInElement(popUpText, "Лист надіслано."));
         return popUp.isDisplayed();

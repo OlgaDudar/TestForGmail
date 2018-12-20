@@ -13,6 +13,7 @@ public class MailBO {
     public void sendMessage(Message msg){
         inBox.createNewMail();
         inBox.setAddress(msg.getToWhom());
+        inBox.setSubject(msg.getSubject());
         inBox.setMessage(msg.getMsgBody());
         inBox.sendMail();
     }

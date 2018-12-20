@@ -13,7 +13,7 @@ public class PopUp extends CustomElement {
         return super.isDisplayed();
     }
 
-    public boolean waitForSend(WebElement msgBoxText) {
+  /*  public boolean waitForSend(WebElement msgBoxText) {
 
         int COUNTER = 0;
         while (true){
@@ -36,6 +36,6 @@ public class PopUp extends CustomElement {
                 COUNTER++;
             }
         }
-    }
+    }*/
 
 }

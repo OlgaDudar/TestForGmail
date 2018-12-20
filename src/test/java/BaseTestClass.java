@@ -4,6 +4,7 @@ import core.model.User;
 import org.testng.annotations.*;
 
 import static core.DataProperties.getDataProperties;
+import static core.DataProperties.setDataProperties;
 
 public class BaseTestClass {
 
@@ -20,9 +21,12 @@ public class BaseTestClass {
         }
 
         try {
+            String sub = getDataProperties("subject").concat("2");
+            setDataProperties("subject", sub);
             user = new User(getDataProperties("login"), getDataProperties("password"));
-            msg = new Message(getDataProperties("sendTo"),"", "Hello");
+            msg = new Message(getDataProperties("sendTo"),sub, "Hello");
             pageUrl = getDataProperties("site");
+
         } catch (Exception e) {
             e.printStackTrace();
         }

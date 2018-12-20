@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.InboxPage;
 import pages.LoginPage;
+import pages.OutBox;
 
 public class Tests extends BaseTestClass {
 
@@ -22,14 +23,26 @@ public class Tests extends BaseTestClass {
     }
 
 
-    @Test (description = "Open Inbox page and send message")
-    public void openInboxPageTest()  {
+    @Test (description = "SendMail with BO")
+    public void sendMail()  {
         LoginBO loginBo = new LoginBO();
         loginBo.login(user);
         MailBO mailBO = new MailBO();
         mailBO.sendMessage(msg);
         mailBO.verifyMsgIsSent();
         Assert.assertTrue(mailBO.verifyMsgIsSent(), " Mail was not sent");
+    }
+
+    @Test (description = "Check messege in outbox")
+    public void checkMailInOutbox()  {
+        LoginBO loginBo = new LoginBO();
+        loginBo.login(user);
+        MailBO mailBO = new MailBO();
+        mailBO.sendMessage(msg);
+        mailBO.verifyMsgIsSent();
+        OutBox outBox = new OutBox();
+        outBox.goToOutBox();
+        Assert.assertTrue(outBox.checkMessageIsPresent(), " Mail was not sent");
     }
 
 }
