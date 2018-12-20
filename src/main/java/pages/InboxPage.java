@@ -58,7 +58,7 @@ public class InboxPage extends BasePage{
 
     public boolean sendMessagePopupDisplayed() {
 
-        Wait<WebDriver> wait = new WebDriverWait(WebDriverSingleton.getInstance(), 10).ignoring(StaleElementReferenceException.class, ElementNotVisibleException.class);
+        Wait<WebDriver> wait = new WebDriverWait(WebDriverSingleton.getDriver(), 10).ignoring(StaleElementReferenceException.class, ElementNotVisibleException.class);
         wait.until(ExpectedConditions.textToBePresentInElement(popUpText, "Лист надіслано."));
         return popUp.isDisplayed();
 

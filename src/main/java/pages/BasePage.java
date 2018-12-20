@@ -12,7 +12,7 @@ public class BasePage  {
     public WebDriver driver;
 
     public BasePage() {
-        driver = WebDriverSingleton.getInstance();
+        driver = WebDriverSingleton.getDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         init();
     }

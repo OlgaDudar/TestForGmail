@@ -39,6 +39,7 @@ public class BaseTestClass {
 
     @AfterMethod
     public void afterSuit(){
+
         WebDriverSingleton.closeDriver();
     }
 

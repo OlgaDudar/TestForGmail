@@ -4,7 +4,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.InboxPage;
 import pages.LoginPage;
-import pages.OutBox;
 
 public class Tests extends BaseTestClass {
 
@@ -40,9 +39,8 @@ public class Tests extends BaseTestClass {
         MailBO mailBO = new MailBO();
         mailBO.sendMessage(msg);
         mailBO.verifyMsgIsSent();
-        OutBox outBox = new OutBox();
-        outBox.goToOutBox();
-        Assert.assertTrue(outBox.checkMessageIsPresent(), " Mail was not sent");
+        mailBO.checkMessageInOutbox();
+        Assert.assertTrue(mailBO.checkMessageInOutbox(), " Mail was not sent");
     }
 
 }

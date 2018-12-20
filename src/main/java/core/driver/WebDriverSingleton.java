@@ -5,19 +5,27 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 
 public class WebDriverSingleton {
+    private static ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<WebDriver>(){
+        @Override
+        protected WebDriver initialValue()
+        {
+            return new ChromeDriver(); // can be replaced with other browser drivers
+        }
+    };
 
-    private static WebDriver driver;
+    public static void setDriver(WebDriver webDriver){
 
-    public static void closeDriver(){
-        driver.close();
-        driver = null;
+        webDriverThreadLocal.set(webDriver);
     }
 
-    public static WebDriver getInstance() {
-        if (driver == null) {
-            driver = new ChromeDriver();
-        }
-        return driver;
+    public static WebDriver getDriver(){
+
+        return webDriverThreadLocal.get();
+    }
+
+    public static void closeDriver(){
+        webDriverThreadLocal.get().quit();
+        webDriverThreadLocal.remove();
     }
 
 }

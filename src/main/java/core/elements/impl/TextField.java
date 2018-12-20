@@ -21,24 +21,9 @@ public class TextField extends CustomElement {
     }
 
     public void waitForTextField(){
-        Wait<WebDriver> wait = new WebDriverWait(WebDriverSingleton.getInstance(), 10).ignoring(StaleElementReferenceException.class, ElementNotVisibleException.class);
+        Wait<WebDriver> wait = new WebDriverWait(WebDriverSingleton.getDriver(), 10).ignoring(StaleElementReferenceException.class, ElementNotVisibleException.class);
         wait.until(ExpectedConditions.visibilityOf(wrappedElement));
     }
 
-
-   /* public void waitForElement() {
-        Boolean staleElement = true;
-        int RETRY_COUNT = 100;
-        while(staleElement && (RETRY_COUNT > 0)){
-            try{
-                wrappedElement.sendKeys("");
-                staleElement = false;
-                RETRY_COUNT--;
-            }
-            catch(StaleElementReferenceException e){
-                staleElement = true;
-            }
-        }
-    }*/
 
 }

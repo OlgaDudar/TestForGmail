@@ -2,6 +2,7 @@ package core.BO;
 
 import core.model.Message;
 import pages.InboxPage;
+import pages.OutBox;
 
 public class MailBO {
     InboxPage  inBox = new InboxPage();
@@ -18,6 +19,13 @@ public class MailBO {
         inBox.sendMail();
     }
     public boolean verifyMsgIsSent(){
-       return inBox.sendMessagePopupDisplayed();
+
+        return inBox.sendMessagePopupDisplayed();
+    }
+
+    public boolean checkMessageInOutbox(){
+        OutBox outBox = new OutBox();
+        outBox.goToOutBox();
+        return outBox.checkMessageIsPresent();
     }
 }
