@@ -9,7 +9,7 @@ public class WebDriverSingleton {
         @Override
         protected WebDriver initialValue()
         {
-            return new ChromeDriver(); // can be replaced with other browser drivers
+            return new ChromeDriver();
         }
     };
 

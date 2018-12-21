@@ -27,7 +27,21 @@ public class BaseTestClass {
 
         driver = WebDriverSingleton.getDriver();
         driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+        try {
+            user = new User(getDataProperties("login"), getDataProperties("password"));
+            pageUrl = getDataProperties("site");
+            String sub = RandomStringUtils.random(8, false, true);
+            setDataProperties("subject", sub);
+            msg = new Message(getDataProperties("sendTo"), sub, "Hello");
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+    @BeforeTest
+    public void beforeMetod(){
+      ;
     }
 
 
@@ -35,5 +49,26 @@ public class BaseTestClass {
     public void afterSuit(){
         WebDriverSingleton.closeDriver();
     }
+    @DataProvider (name = "getData", parallel = true)
+    public Object[][] getData()
+    {
+        
+        Object[][] data = new Object[3][1];
+        String sub = null;
+
+        for (int i=0; i<3; i++) {
+            try {
+                sub = RandomStringUtils.random(8, false, true);
+                setDataProperties("subject", sub);
+                msg = new Message(getDataProperties("sendTo"), sub, "Hello");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            data[i][0] = new Message(getDataProperties("sendTo"),sub, "Hello");
+        }
+        return data;
+    }
+
+
 
 }
