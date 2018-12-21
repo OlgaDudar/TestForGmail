@@ -1,7 +1,11 @@
 import core.driver.WebDriverSingleton;
 import core.model.Message;
 import core.model.User;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
+import java.util.concurrent.TimeUnit;
+
 
 import static core.DataProperties.getDataProperties;
 import static core.DataProperties.setDataProperties;
@@ -11,6 +15,7 @@ public class BaseTestClass {
     User user = null;
     Message msg = null;
     String pageUrl = null;
+    WebDriver driver;
 
     @BeforeClass
     public void setProp()  {
@@ -20,26 +25,14 @@ public class BaseTestClass {
             e.printStackTrace();
         }
 
-        try {
-            String sub = getDataProperties("subject").concat("2");
-            setDataProperties("subject", sub);
-            user = new User(getDataProperties("login"), getDataProperties("password"));
-            msg = new Message(getDataProperties("sendTo"),sub, "Hello");
-            pageUrl = getDataProperties("site");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        driver = WebDriverSingleton.getDriver();
+        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 
     }
-    @BeforeTest
-    public void beforeTest(){
-      ;
-    }
+
 
     @AfterMethod
     public void afterSuit(){
-
         WebDriverSingleton.closeDriver();
     }
 

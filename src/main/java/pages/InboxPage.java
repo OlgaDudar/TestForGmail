@@ -30,6 +30,9 @@ public class InboxPage extends BasePage{
     @FindBy(xpath = "//span[@class='bAq']")
     private WebElement popUpText;
 
+    public InboxPage(WebDriver dr) {
+        super(dr);
+    }
 
 
     public void createNewMail(){

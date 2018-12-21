@@ -1,11 +1,10 @@
 package pages;
 
 import core.elements.impl.Button;
+import core.model.Message;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
-
 import java.util.List;
-import static core.DataProperties.getDataProperties;
 
 public class OutBox extends BasePage{
     @FindBy(xpath = "//div[@class='TN bzz aHS-bnu']")
@@ -13,15 +12,19 @@ public class OutBox extends BasePage{
     @FindBy(xpath = "//table//tr[@class='zA yO']")
     private WebElement subject;
 
+    public OutBox(WebDriver dr) {
+        super(dr);
+    }
+
     public void goToOutBox(){
         outBox.click();
     }
-    public boolean checkMessageIsPresent(){
+
+    public boolean checkMessageIsPresent(Message msg){
         String sub;
-        sub = getDataProperties("subject");
+        sub = msg.getSubject();
         List<WebElement> list =subject.findElements(By.xpath("//*[contains(text(),'" + sub + "')]"));
-        if (list.size()>0) return true;
-        return false;
+        return (list.size()>0);
     }
 
 }

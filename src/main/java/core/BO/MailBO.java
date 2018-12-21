@@ -1,11 +1,13 @@
 package core.BO;
 
+import core.driver.WebDriverSingleton;
 import core.model.Message;
 import pages.InboxPage;
 import pages.OutBox;
 
 public class MailBO {
-    InboxPage  inBox = new InboxPage();
+
+    InboxPage  inBox = new InboxPage(WebDriverSingleton.getDriver());
 
     public MailBO(){
         ;
@@ -23,9 +25,9 @@ public class MailBO {
         return inBox.sendMessagePopupDisplayed();
     }
 
-    public boolean checkMessageInOutbox(){
-        OutBox outBox = new OutBox();
+    public boolean checkMessageInOutbox(Message msg){
+        OutBox outBox = new OutBox(WebDriverSingleton.getDriver());
         outBox.goToOutBox();
-        return outBox.checkMessageIsPresent();
+        return outBox.checkMessageIsPresent(msg);
     }
 }
