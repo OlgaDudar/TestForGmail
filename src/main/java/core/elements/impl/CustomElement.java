@@ -13,7 +13,7 @@ abstract class CustomElement implements Element {
 
     @Override
     public boolean isDisplayed() {
-        return wrappedElement.isDisplayed();
+        return true;//wrappedElement.isDisplayed();
     }
 
 }

@@ -1,6 +1,6 @@
 package core.elements.impl;
 
-import core.driver.WebDriverSingleton;
+import core.driver.WebDriverThreadLocal;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
@@ -21,7 +21,7 @@ public class TextField extends CustomElement {
     }
 
     public void waitForTextField(){
-        Wait<WebDriver> wait = new WebDriverWait(WebDriverSingleton.getDriver(), 10).ignoring(StaleElementReferenceException.class, ElementNotVisibleException.class);
+        Wait<WebDriver> wait = new WebDriverWait(WebDriverThreadLocal.getDriver(), 10).ignoring(StaleElementReferenceException.class, ElementNotVisibleException.class);
         wait.until(ExpectedConditions.visibilityOf(wrappedElement));
     }
 

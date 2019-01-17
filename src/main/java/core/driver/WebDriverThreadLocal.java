@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 
-public class WebDriverSingleton {
+public class WebDriverThreadLocal {
     private static ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<WebDriver>(){
         @Override
         protected WebDriver initialValue()

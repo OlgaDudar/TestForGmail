@@ -1,19 +1,21 @@
 package core.BO;
 
-import core.driver.WebDriverSingleton;
+import core.driver.WebDriverThreadLocal;
 import core.model.User;
 import pages.LoginPage;
 
 import static core.DataProperties.getDataProperties;
 
 public class LoginBO {
-    LoginPage loginPage = new LoginPage(WebDriverSingleton.getDriver());
+    LoginPage loginPage;
+
 
     public LoginBO() {
-    ;
+    loginPage = new LoginPage(WebDriverThreadLocal.getDriver());;
     }
+
     public void login (User user){
-        String pageUrl = getDataProperties("site");
+        String pageUrl = getDataProperties("site", "system.properties");
         loginPage.openSite(pageUrl);
         loginPage.inputMail(user.getLogin());
         loginPage.inputPassword(user.getPassword());

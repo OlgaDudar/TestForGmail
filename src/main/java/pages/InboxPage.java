@@ -1,6 +1,6 @@
 package pages;
 
-import core.driver.WebDriverSingleton;
+import core.driver.WebDriverThreadLocal;
 import core.elements.impl.Button;
 import core.elements.impl.PopUp;
 import core.elements.impl.TextField;
@@ -61,7 +61,7 @@ public class InboxPage extends BasePage{
 
     public boolean sendMessagePopupDisplayed() {
 
-        Wait<WebDriver> wait = new WebDriverWait(WebDriverSingleton.getDriver(), 10).ignoring(StaleElementReferenceException.class, ElementNotVisibleException.class);
+        Wait<WebDriver> wait = new WebDriverWait(WebDriverThreadLocal.getDriver(), 10).ignoring(StaleElementReferenceException.class, ElementNotVisibleException.class);
         wait.until(ExpectedConditions.textToBePresentInElement(popUpText, "Лист надіслано."));
         return popUp.isDisplayed();
 

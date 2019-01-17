@@ -1,6 +1,6 @@
 package pages;
 
-import core.driver.WebDriverSingleton;
+import core.driver.WebDriverThreadLocal;
 import core.elements.impl.Button;
 import core.model.Message;
 import org.openqa.selenium.*;
@@ -14,8 +14,10 @@ import java.util.List;
 public class OutBox extends BasePage{
     @FindBy(xpath = "//div[@class='TN bzz aHS-bnu']")
     private Button outBox;
-    @FindBy(xpath = "//table//span[@class='bqe']")
+    @FindBy(xpath = "//table//span[@class='bog']")
     private WebElement subject;
+
+    String title = "Надіслані - test18.acount18@gmail.com - Gmail";
 
     public OutBox(WebDriver dr) {
         super(dr);
@@ -28,8 +30,8 @@ public class OutBox extends BasePage{
     }
 
 public void waitOutbox(){
-    Wait<WebDriver> wait = new WebDriverWait(WebDriverSingleton.getDriver(), 10).ignoring(StaleElementReferenceException.class, ElementNotVisibleException.class);
-    wait.until(ExpectedConditions.titleContains("Надіслані"));
+    Wait<WebDriver> wait = new WebDriverWait(WebDriverThreadLocal.getDriver(), 10).ignoring(StaleElementReferenceException.class, ElementNotVisibleException.class);
+    wait.until(ExpectedConditions.titleContains(title));
 }
 
 
