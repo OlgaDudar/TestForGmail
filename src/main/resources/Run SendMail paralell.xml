@@ -1,7 +1,0 @@
-<suite name="SendMail Suite" >
-    <test name="SendMail">
-        <classes>
-            <class name="SendMail" />
-        </classes>
-    </test>
-</suite>

@@ -1,0 +1,8 @@
+<suite name="negativeTests.CheckAccount" >
+<test name="negativeTests.CheckAccount">
+    <classes>
+        <class name="negativeTests.CheckWrongAccount" />
+        <class name="negativeTests.CheckWrongPassword" />
+    </classes>
+</test>
+</suite>

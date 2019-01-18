@@ -1,7 +1,7 @@
 <suite name="CheckOutbox Suite" >
     <test name="CheckOutbox">
         <classes>
-            <class name="CheckMailOutbox" />
+            <class name="positiveTests.CheckMailOutbox" />
         </classes>
     </test>
 </suite>

@@ -1,9 +1,0 @@
-<suite name="Test-class Suite"  parallel="methods" thread-count="7">
-    <test name="Test-class test" >
-        <classes>
-            <class name="CheckMailOutbox" />
-            <class name="SendMail" />
-            <class name="TestWithoutBO" />
-        </classes>
-    </test>
-</suite>

@@ -1,0 +1,7 @@
+<suite name="positiveTests.SendMail Suite" >
+    <test name="positiveTests.SendMail">
+        <classes>
+            <class name="positiveTests.SendMail" />
+        </classes>
+    </test>
+</suite>

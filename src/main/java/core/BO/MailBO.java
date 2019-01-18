@@ -32,9 +32,10 @@ public class MailBO {
         return outBox.checkMessageIsPresent(msg);
     }
 
-    public void downloadAttachment(Message msg){
+    public boolean downloadAttachment(Message msg){
         LetterPage letter = new LetterPage(WebDriverThreadLocal.getDriver());
         letter.openLetter(msg);
         letter.DownloadAttachment();
+        return true;
     }
 }

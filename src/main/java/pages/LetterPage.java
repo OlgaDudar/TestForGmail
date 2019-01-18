@@ -1,6 +1,7 @@
 package pages;
 
 import core.elements.impl.Button;
+import core.elements.impl.ListMail;
 import core.model.Message;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -20,25 +21,20 @@ public class LetterPage extends BasePage{
     public Button dwnToDrive;
     @FindBy(xpath = "//div[@class='J-M J-M-ayU DSaQrd']//div[text()='Спрощена китайська']")
     public Button dwnChinese;
+    //@FindBy(xpath = "//div[@class='ae4 aDM']//span[@class='bA4']")
     @FindBy(xpath = "//div[@class='ae4 aDM']//span[@class='bA4']")
-    public WebElement fromList;
-    @FindBy(xpath = "//div[@class=' G-atb D E']//div[@class='G-Ni G-aE J-J5-Ji']//div[@class='T-I J-J5-Ji lS T-I-ax7 mA T-I-Zf-aw2']")
+    public ListMail fromList;
+    @FindBy(xpath = "//div[@act='19']")
     private Button backToInbox;
-    @FindBy(xpath = "//span[@class='nU ']")
-    public WebElement lk_Inbox;
 
     public void openLetter(Message msg) {
         String sub;
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
     }
 
-    public List<WebElement> getMails(){
-        List<WebElement> list = fromList.findElements(By.xpath("//table//div[@class='yW']"));
-        return list;
+    public WebElement getMailWithAttachment(){
+        fromList.waitForList();
+        return fromList.findElement(By.xpath("//table//div[@class='yW']//span[contains(text(),'Olga Dudar')]"));
     }
 
     public boolean CheckAttachmentIsPresent(){
@@ -46,27 +42,21 @@ public class LetterPage extends BasePage{
     }
 
     public void DownloadAttachment(){
-        String mainWindowHandle = driver.getWindowHandles().iterator().next();
-        Iterator<WebElement> iterator = getMails().iterator();
-        while(iterator.hasNext()) {
-            WebElement obj = iterator.next();
-            obj.click();
 
-            if (CheckAttachmentIsPresent()) {
-                dwnAttach.click();
-                dwnChinese.click();
-                System.out.println(driver.getTitle());
-                driver.navigate().back();
-                try {
-                    Thread.sleep(8000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            } else {
-                System.out.println("Attachment not present in letter");
-                driver.navigate().back();
-            }
+        getMailWithAttachment().click();
+
+        if (CheckAttachmentIsPresent()) {
+            dwnAttach.click();
+            dwnChinese.click();
+            System.out.println(driver.getTitle());
+            backToInbox.click();
+            System.out.println(driver.getTitle());
+
+        } else {
+            System.out.println("Attachment not present in letter");
+            backToInbox.click();
         }
+
     }
 
 
