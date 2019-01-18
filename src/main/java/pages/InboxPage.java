@@ -25,7 +25,7 @@ public class InboxPage extends BasePage{
     @FindBy(xpath = "//div[@class='J-J5-Ji btA']")
     private Button btnSend;
     @FindBy(xpath = "//div[@class='Am Al editable LW-avf']")
-    private TextField Msg;
+    private TextField msg;
     @FindBy(xpath = "//div[@class='bBe']")
     private PopUp popUp;
     @FindBy(xpath = "//span[@class='bAq']")
@@ -51,12 +51,13 @@ public class InboxPage extends BasePage{
 
     public void setMessage(String txt){
 
-        Msg.type(txt + Keys.TAB);
+        msg.type(txt + Keys.TAB);
     }
 
     public void sendMail(){
 
         btnSend.click();
+
     }
 
     public boolean sendMessagePopupDisplayed() {

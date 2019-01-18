@@ -1,5 +1,4 @@
 package core.elements.impl;
-import com.google.common.collect.ImmutableMap;
 import core.driver.WebDriverThreadLocal;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -19,7 +18,7 @@ public class Button extends CustomElement {
         waitForButton();
         wrappedElement.click();
     }
-    public void waitForButton(){
+    private void waitForButton(){
         Wait<WebDriver> wait = new WebDriverWait(WebDriverThreadLocal.getDriver(), 10).ignoring(StaleElementReferenceException.class, ElementNotVisibleException.class);
         wait.until(ExpectedConditions.visibilityOf(wrappedElement));
     }

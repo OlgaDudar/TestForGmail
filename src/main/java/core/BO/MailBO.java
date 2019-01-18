@@ -6,9 +6,10 @@ import pages.InboxPage;
 import pages.LetterPage;
 import pages.OutBox;
 
+
 public class MailBO {
 
-    InboxPage  inBox;
+    private InboxPage  inBox;
 
     public MailBO(){
         inBox = new InboxPage(WebDriverThreadLocal.getDriver());
