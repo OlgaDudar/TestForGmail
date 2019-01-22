@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 public class DownloadAttachment extends BaseTest {
 
-    @Test(dataProvider="getMessage",  threadPoolSize = 3, description = "Check download message", groups = "positive")
+    @Test(dataProvider="getMessage",  threadPoolSize = 3, description = "Check download message", groups = {"positive"})
     public void downloadAttachment(Message msg)  {
         LoginBO loginBo = new LoginBO();
         loginBo.login(user);

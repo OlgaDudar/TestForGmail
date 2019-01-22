@@ -3,11 +3,11 @@ package pages;
 import core.elements.impl.Button;
 import core.elements.impl.ListMail;
 import core.model.Message;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
 
 public class LetterPage extends BasePage{
 
@@ -24,36 +24,34 @@ public class LetterPage extends BasePage{
     @FindBy(xpath = "//div[@act='19']")
     private Button backToInbox;
 
-    public void openLetter(Message msg) {
-        String sub;
+//    public void openLetter(Message msg) {
+//        String sub;
+//    }
 
-    }
-
+    @Step("Search mail with attachment")
     private WebElement getMailWithAttachment(){
         fromList.waitForList();
         return fromList.findElement(By.xpath("//table//div[@class='yW']//span[contains(text(),'Olga Dudar')]"));
     }
 
+    @Step("Check attachment is present in mail")
     private boolean CheckAttachmentIsPresent(){
         return dwnAttach.isDisplayed();
     }
 
+    @Step("Download attachment on Chinese archive")
     public void DownloadAttachment(){
-
         getMailWithAttachment().click();
-
         if (CheckAttachmentIsPresent()) {
             dwnAttach.click();
             dwnChinese.click();
             System.out.println(driver.getTitle());
             backToInbox.click();
             System.out.println(driver.getTitle());
-
         } else {
             System.out.println("Attachment not present in letter");
             backToInbox.click();
         }
-
     }
 
 

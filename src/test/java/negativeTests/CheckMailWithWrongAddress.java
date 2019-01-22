@@ -1,4 +1,4 @@
-package positiveTests;
+package negativeTests;
 
 import core.BO.LoginBO;
 import core.BO.MailBO;
@@ -7,15 +7,16 @@ import coreTest.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+public class CheckMailWithWrongAddress extends BaseTest {
 
-public class SendMail extends BaseTest {
-
-    @Test(dataProvider="getData",  threadPoolSize = 3,  description = "positiveTests.SendMail with BO", groups = {"positive"})
-    public void sendMail(Message msg) {
+    @Test(description = "negative.SendMail with BO", groups = {"negative"})
+    public void sendMail() {
+        Message msg = new Message("test.test", "qwe","");
         LoginBO loginBo = new LoginBO();
         loginBo.login(user);
         MailBO mailBO = new MailBO();
         mailBO.sendMessage(msg);
-        Assert.assertTrue(mailBO.verifyMsgIsSent(), " Mail was not sent");
+        Assert.assertTrue(mailBO.verifyWrongAddress(), " Error");
     }
+
 }

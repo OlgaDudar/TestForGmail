@@ -10,14 +10,13 @@ import org.testng.annotations.Test;
 
 public class CheckMailOutbox extends BaseTest {
 
-    @Test (dataProvider="getData",  threadPoolSize = 3, description = "Check messege in outbox", groups = "positive")
+    @Test (dataProvider="getData",  threadPoolSize = 3, description = "Check message in outbox", groups = {"positive"})
     public void checkMailInOutbox(Message msg)  {
         LoginBO loginBo = new LoginBO();
         loginBo.login(user);
         MailBO mailBO = new MailBO();
         mailBO.sendMessage(msg);
         mailBO.verifyMsgIsSent();
-        mailBO.checkMessageInOutbox(msg);
         Assert.assertTrue(mailBO.checkMessageInOutbox(msg), " Mail not present in outbox");
     }
 
