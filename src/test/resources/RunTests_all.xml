@@ -1,0 +1,25 @@
+<suite name="Test-class Suite" parallel="classes" thread-count="3">
+    <test name="Test-class test" >
+        <groups>
+            <define name = "all">
+                <include name ="positive"/>
+                <exclude name ="negative"/>
+            </define>
+            <run>
+                <include name="all" />
+            </run>
+        </groups>
+        <classes>
+            <class name="positiveTests.CheckInsertEmojiInMessage"/>
+            <class name="positiveTests.CheckMailOutbox" />
+            <class name="positiveTests.SendMail" />
+            <class name="positiveTests.DownloadAttachment" />
+            <class name="positiveTests.DeleteMessage" />
+            <class name="negativeTests.CheckWrongPassword" />
+            <class name="negativeTests.CheckWrongAccount"/>
+            <class name="negativeTests.CheckMailWithoutSubject" />
+            <class name="negativeTests.CheckMailWithoutAnyData" />
+            <class name="negativeTests.CheckMailWithWrongAddress"/>
+        </classes>
+    </test>
+</suite>

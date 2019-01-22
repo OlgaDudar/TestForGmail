@@ -1,0 +1,9 @@
+<suite name="Test-class Suite"  parallel="method" thread-count="7">
+    <test name="Test-class test" >
+        <classes>
+            <class name="positiveTests.CheckMailOutbox" />
+            <class name="positiveTests.SendMail" />
+            <class name="positiveTests.DownloadAttachment" />
+        </classes>
+    </test>
+</suite>
