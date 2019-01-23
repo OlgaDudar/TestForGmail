@@ -53,6 +53,7 @@
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
             <version>2.8.1</version>
+
         </dependency>
 
         <dependency>
@@ -79,18 +80,18 @@
         <!--</dependency>-->
 
         <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-junit4 -->
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-junit4</artifactId>
-            <version>2.7.0</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>7.0.0-beta3</version>
-            <scope>compile</scope>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>io.qameta.allure</groupId>-->
+            <!--<artifactId>allure-junit4</artifactId>-->
+            <!--<version>2.7.0</version>-->
+            <!--<scope>test</scope>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.testng</groupId>-->
+            <!--<artifactId>testng</artifactId>-->
+            <!--<version>7.0.0-beta3</version>-->
+            <!--<scope>compile</scope>-->
+        <!--</dependency>-->
 
 
     </dependencies>
@@ -124,11 +125,12 @@
                     <properties>
                         <property>
                             <name>listener</name>
-                            <value>io.qameta.allure.junit4.AllureJunit4</value>
+                            <value>io.qameta.allure.testng.AllureTestNg</value>
                         </property>
-                        <reportsDirectory>allure-report</reportsDirectory>
+                        <reportsDirectory>allure-report3</reportsDirectory>
 
                     </properties>
+
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -139,15 +141,15 @@
                 </dependencies>
             </plugin>
             <plugin>
-            <groupId>ru.yandex.qatools.allure</groupId>
-            <artifactId>allure-maven-plugin</artifactId>
-            <configuration>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <configuration>
 
-                <resultsDirectory>allure-results</resultsDirectory>
-                <reportDirectory>allure-report</reportDirectory>
-                <propertiesFilePath>allure.properties</propertiesFilePath>
-            </configuration>
-            <version>2.6</version>
+                    <resultsDirectory>target/allure-results</resultsDirectory>
+                    <reportDirectory>allure-report1</reportDirectory>
+                    <!--<propertiesFilePath>allure.properties</propertiesFilePath>-->
+                </configuration>
+                <version>2.9</version>
             </plugin>
 
             <plugin>
@@ -165,5 +167,23 @@
 
 
     </build>
+
+    <reporting>
+        <excludeDefaults>true</excludeDefaults>
+        <plugins>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.9</version>
+                <configuration>
+                    <reportDirectory>allure-report2</reportDirectory>
+                    <resultsDirectory>allure-results</resultsDirectory>
+                    <!--<properties>-->
+                        <!--<allure.issues.tracker.pattern>http://example.com/%s</allure.issues.tracker.pattern>-->
+                    <!--</properties>-->
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
 
 </project>

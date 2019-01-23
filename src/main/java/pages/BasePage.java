@@ -2,6 +2,7 @@ package pages;
 
 import core.ExtendedFieldDecorator;
 import io.qameta.allure.Step;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
@@ -13,9 +14,11 @@ import java.util.concurrent.TimeUnit;
 public class BasePage  {
     protected WebDriver driver;
 
+
     public BasePage(WebDriver dr) {
         driver = dr;
         init();
+
     }
 
     public String getTitle(){

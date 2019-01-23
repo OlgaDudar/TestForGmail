@@ -5,6 +5,7 @@ import core.elements.impl.Button;
 import core.elements.impl.PopUp;
 import core.elements.impl.TextField;
 import io.qameta.allure.Step;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -41,6 +42,8 @@ public class InboxPage extends BasePage{
     @FindBy(xpath = "//div[@class='Kj-JD']")
     private WebElement warningWrongAddress;
 
+    Logger logger = Logger.getLogger(BasePage.class.getName());
+
     public InboxPage(WebDriver dr) {
         super(dr);
     }
@@ -49,6 +52,7 @@ public class InboxPage extends BasePage{
     public void insertEmoji(){
         insertEmoji.click();
         emoji.click();
+        logger.info("INSERT EMOJI");
     }
 
     @Step("Check Emoji is present in Message")
@@ -59,26 +63,31 @@ public class InboxPage extends BasePage{
     @Step("Click on New Mail button")
     public void createNewMail(){
         btnNewMail.click();
+        logger.info("NEW MAIL");
     }
 
     @Step("Input address")
     public void setAddress(String to){
         toWhomtxt.type(to);
+        logger.info("INPUT ADDRESS");
     }
 
     @Step("Input subject")
     public void setSubject(String sub){
         subject.type(sub);
+        logger.info("INPUT SUBJECT");
     }
 
     @Step("Input message")
     public void setMessage(String txt){
         msg.type(txt + Keys.TAB);
+        logger.info("INPUT MESSAGE");
     }
 
     @Step("Click on Send button")
     public void sendMail(){
         btnSend.click();
+        logger.info("SEND MAIL");
     }
 
     @Step("Check that message about sent mail is appeared")

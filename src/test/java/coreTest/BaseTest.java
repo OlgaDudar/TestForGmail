@@ -24,11 +24,11 @@ public class BaseTest {
     protected String sub_prop = "subject.properties";
     protected User wrongUserToAccount = null;
     protected User wrongUserToPassword = null;
-    static Logger LOG = Logger.getLogger(BaseTest.class.getName());
+    static Logger logger = Logger.getLogger(BaseTest.class.getName());
 
     @BeforeSuite(groups = {"positive", "negative"})
     public void init(){
-        LOG.info("INIT START");
+        logger.info("INIT START");
         System.setProperty("webdriver.chrome.driver", getDataProperties("driverPath", sys_prop));
         pageUrl = getDataProperties("site", sys_prop);
     }
@@ -41,7 +41,7 @@ public class BaseTest {
 
     @BeforeMethod(groups = {"positive", "negative"})
     public void setProp()  {
-        LOG.info("START");
+        logger.info("START");
         String sub = RandomStringUtils.random(8, false, true);
         msg = new Message(getDataProperties("sendTo", sys_prop),  sub, "Hello");
         String pageUrl = getDataProperties("site", "system.properties");
@@ -53,7 +53,7 @@ public class BaseTest {
     @AfterMethod(groups = {"positive", "negative"})
     public void afterMethod(ITestResult result){
         if(ITestResult.FAILURE==result.getStatus()) {
-            LOG.error("TEST FAILED ERROR CUSTOM MESSAGE");
+            logger.error("TEST FAILED ERROR CUSTOM MESSAGE");
             makeScreenshot();
         }
         if(ITestResult.SKIP==result.getStatus()) {
@@ -111,7 +111,7 @@ public class BaseTest {
         }
     }
 
-    @AfterSuite()
+    @AfterTest()
     public void runReport(){
         try {
             String projectDir = System.getProperty("user.dir");
