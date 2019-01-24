@@ -20,11 +20,12 @@ public class BaseTest {
     protected User user = null;
     protected Message msg;
     protected String pageUrl = null;
-    protected String sys_prop = "system.properties";
-    protected String sub_prop = "subject.properties";
+    private String sys_prop = "system.properties";
+    private String sub_prop = "subject.properties";
     protected User wrongUserToAccount = null;
     protected User wrongUserToPassword = null;
-    static Logger logger = Logger.getLogger(BaseTest.class.getName());
+    private static Logger logger = Logger.getLogger(BaseTest.class.getName());
+
 
     @BeforeSuite(groups = {"positive", "negative"})
     public void init(){
@@ -115,7 +116,7 @@ public class BaseTest {
     public void runReport(){
         try {
             String projectDir = System.getProperty("user.dir");
-            Process p = Runtime.getRuntime().exec("C:\\allure-commandline-2.9.0\\allure-2.9.0\\bin\\allure.bat generate "+projectDir+"\\target\\allure-results -o "+projectDir+"\\target\\allure-report");
+            Process p = Runtime.getRuntime().exec(".allure\\allure-2.8.1\\bin\\allure.bat generate "+projectDir+"\\target\\allure-results -o "+projectDir+"\\target\\allure-report");
             p.waitFor();
         } catch (IOException e) {
             e.printStackTrace();

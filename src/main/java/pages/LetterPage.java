@@ -2,7 +2,6 @@ package pages;
 
 import core.elements.impl.Button;
 import core.elements.impl.ListMail;
-import core.model.Message;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -23,15 +22,13 @@ public class LetterPage extends BasePage{
     private ListMail fromList;
     @FindBy(xpath = "//div[@act='19']")
     private Button backToInbox;
+    private String xPathForMail = "//table//div[@class='yW']//span[contains(text(),'Olga Dudar')]";
 
-//    public void openLetter(Message msg) {
-//        String sub;
-//    }
 
     @Step("Search mail with attachment")
     private WebElement getMailWithAttachment(){
         fromList.waitForList();
-        return fromList.findElement(By.xpath("//table//div[@class='yW']//span[contains(text(),'Olga Dudar')]"));
+        return fromList.findElement(By.xpath(xPathForMail));
     }
 
     @Step("Check attachment is present in mail")
