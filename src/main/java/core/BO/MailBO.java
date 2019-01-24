@@ -71,7 +71,6 @@ public class MailBO {
 
     public boolean downloadAttachment(Message msg){
         LetterPage letter = new LetterPage(WebDriverThreadLocal.getDriver());
-//        letter.openLetter(msg);
         letter.DownloadAttachment();
         return true;
     }

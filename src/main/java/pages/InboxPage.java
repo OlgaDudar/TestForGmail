@@ -42,8 +42,7 @@ public class InboxPage extends BasePage{
     @FindBy(xpath = "//div[@class='Kj-JD']")
     private WebElement warningWrongAddress;
 
-    Logger logger = Logger.getLogger(BasePage.class.getName());
-
+    private Logger logger = Logger.getLogger(BasePage.class.getName());
     public InboxPage(WebDriver dr) {
         super(dr);
     }

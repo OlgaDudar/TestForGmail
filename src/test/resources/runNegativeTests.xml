@@ -4,6 +4,9 @@
     <classes>
         <class name="negativeTests.CheckWrongAccount" />
         <class name="negativeTests.CheckWrongPassword" />
+        <class name="negativeTests.CheckMailWithoutAnyData"/>
+        <class name="negativeTests.CheckMailWithoutSubject"/>
+        <class name="negativeTests.CheckMailWithWrongAddress"/>
     </classes>
 </test>
 </suite>
