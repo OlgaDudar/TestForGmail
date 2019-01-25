@@ -1,4 +1,5 @@
 package coreTest;
+import core.CustomListener;
 import core.driver.WebDriverThreadLocal;
 import core.model.Message;
 import core.model.User;
@@ -15,6 +16,8 @@ import java.util.Date;
 
 import static core.DataProperties.getDataProperties;
 import static core.DataProperties.setDataProperties;
+
+@Listeners (CustomListener.class)
 
 public class BaseTest {
 

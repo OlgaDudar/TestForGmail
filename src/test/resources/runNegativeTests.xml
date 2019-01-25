@@ -1,5 +1,7 @@
 <suite name="negativeTests.CheckAccount" >
-
+    <listeners>
+        <listener class-name = "core.CustomListener"/>
+    </listeners>
     <test name="negativeTests.CheckAccount">
     <classes>
         <class name="negativeTests.CheckWrongAccount" />
