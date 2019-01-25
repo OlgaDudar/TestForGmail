@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 @Feature("Work with mail")
 public class DownloadAttachment extends BaseTest {
 
-    @Test(dataProvider="getMessage",  threadPoolSize = 3, description = "Check download message", groups = {"positive"})
+    @Test(dataProvider="getMessage",  threadPoolSize = 3, description = "positiveTests.Check download message", groups = {"positive"})
     @Story("Check that attashment was download in archive")
     public void downloadAttachment(Message msg)  {
         LoginBO loginBo = new LoginBO();

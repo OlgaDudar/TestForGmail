@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 @Feature("Work with mail")
 public class CheckMailWithoutSubject extends BaseTest {
 
-    @Test(description = "negativeTests.SendMail with BO", groups = {"negative"})
+    @Test(description = "negativeTests.SendMail without subject", groups = {"negative"})
     @Story("Test check send email without subject")
 
     public void sendMail() {

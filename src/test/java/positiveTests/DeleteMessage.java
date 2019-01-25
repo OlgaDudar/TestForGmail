@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 @Feature("Work with mail")
 public class DeleteMessage extends BaseTest {
 
-    @Test(dataProvider="deleteMessage",  threadPoolSize = 1, description = "Delete message", groups = {"positive"})
+    @Test(dataProvider="deleteMessage",  threadPoolSize = 1, description = "positiveTests.Delete message", groups = {"positive"})
     @Story("Check that message from list was deleted when click on Delete(Trash) button")
     public void deleteMail (Message msg)  {
         LoginBO loginBo = new LoginBO();

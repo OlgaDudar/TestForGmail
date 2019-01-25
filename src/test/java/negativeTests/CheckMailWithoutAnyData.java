@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 
 public class CheckMailWithoutAnyData extends BaseTest {
 
-    @Test(description = "negative.SendMail with BO", groups = {"negative"})
+    @Test(description = "negative.SendMail without adress and subject", groups = {"negative"})
     @Story("Test check send email without adress and subject")
     public void sendMail() {
         Message msg = new Message("", "","");

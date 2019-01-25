@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 
 public class CheckMailOutbox extends BaseTest {
 
-    @Test (dataProvider="getData",  threadPoolSize = 3, description = "Check message in outbox", groups = {"positive"})
+    @Test (dataProvider="getData",  threadPoolSize = 3, description = "positiveTests.Check message in outbox", groups = {"positive"})
     @Story("Check that sent mail is present in OutBox")
     public void checkMailInOutbox(Message msg)  {
         LoginBO loginBo = new LoginBO();

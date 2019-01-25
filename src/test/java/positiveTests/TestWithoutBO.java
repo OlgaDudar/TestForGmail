@@ -11,7 +11,7 @@ import pages.LoginPage;
 
 public class TestWithoutBO extends BaseTest {
 
-    @Test(description = "Login to Gmail and send message using Page Object Model", groups = {"positive"})
+    @Test(description = "positiveTests.Login to Gmail and send message using Page Object Model", groups = {"positive"})
     public void loginSendMailTest() {
         LoginPage loginPage = new LoginPage(WebDriverThreadLocal.getDriver());
         loginPage.openSite(pageUrl);

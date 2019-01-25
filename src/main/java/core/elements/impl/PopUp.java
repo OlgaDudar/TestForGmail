@@ -12,5 +12,8 @@ public class PopUp extends CustomElement {
 
         return super.isDisplayed();
     }
-
+//    @Override
+//    public boolean isEnabled(){
+//        return super.isEnabled();
+//    }
 }

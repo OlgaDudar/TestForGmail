@@ -2,7 +2,6 @@ package pages;
 
 import core.ExtendedFieldDecorator;
 import io.qameta.allure.Step;
-import org.apache.log4j.Logger;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;

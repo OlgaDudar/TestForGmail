@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 @Feature("Work with mail")
 public class CheckMailWithWrongAddress extends BaseTest {
 
-    @Test(description = "negative.SendMail with BO", groups = {"negative"})
+    @Test(description = "negative.SendMail with wrong adress", groups = {"negative"})
     @Story("Test check send email with wrong adress")
 
     public void sendMail() {
