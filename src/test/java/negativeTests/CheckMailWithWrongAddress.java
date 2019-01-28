@@ -11,6 +11,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 @Epic("Regresion Tests")
 @Feature("Work with mail")
+
 public class CheckMailWithWrongAddress extends BaseTest {
 
     @Test(description = "negative.SendMail with wrong adress", groups = {"negative"})

@@ -1,5 +1,9 @@
 package core;
 
+import core.driver.WebDriverThreadLocal;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.testng.IInvokedMethod;
 
 import org.testng.IInvokedMethodListener;
@@ -18,15 +22,17 @@ import org.testng.ITestResult;
 
 import org.testng.Reporter;
 
+import java.io.File;
+
 public class CustomListener implements ITestListener, ISuiteListener, IInvokedMethodListener {
 
-
+   private String path = System.getProperty("user.dir")+"\\screenshots\\"+System.currentTimeMillis()+".png";
 
     @Override
 
     public void onStart(ISuite arg0) {
 
-        Reporter.log("About to begin executing Suite " + arg0.getName(), true);
+        Reporter.log("Start executing Suite " + arg0.getName(), true);
 
     }
 
@@ -36,7 +42,7 @@ public class CustomListener implements ITestListener, ISuiteListener, IInvokedMe
 
     public void onFinish(ISuite arg0) {
 
-        Reporter.log("About to end executing Suite " + arg0.getName(), true);
+        Reporter.log("End executing Suite " + arg0.getName(), true);
 
     }
 
@@ -44,7 +50,7 @@ public class CustomListener implements ITestListener, ISuiteListener, IInvokedMe
 
     public void onStart(ITestContext arg0) {
 
-        Reporter.log("About to begin executing Test " + arg0.getName(), true);
+        Reporter.log("Start executing Test " + arg0.getName(), true);
 
     }
 
@@ -125,12 +131,14 @@ public class CustomListener implements ITestListener, ISuiteListener, IInvokedMe
             case ITestResult.SUCCESS:
 
                 status = "Pass";
+                //makeScreenshot();
 
                 break;
 
             case ITestResult.FAILURE:
 
                 status = "Failed";
+                //makeScreenshot();
 
                 break;
 
@@ -140,7 +148,7 @@ public class CustomListener implements ITestListener, ISuiteListener, IInvokedMe
 
         }
 
-        Reporter.log("Test Status: " + status, true);
+        Reporter.log("Test Status: " + status +" See attachment: " + makeScreenshot(), true);
 
     }
 
@@ -148,7 +156,7 @@ public class CustomListener implements ITestListener, ISuiteListener, IInvokedMe
 
     public void beforeInvocation(IInvokedMethod arg0, ITestResult arg1) {
 
-        String textMsg = "About to begin executing following method : " + returnMethodName(arg0.getTestMethod());
+        String textMsg = "Start executing following method : " + returnMethodName(arg0.getTestMethod());
 
         Reporter.log(textMsg, true);
 
@@ -173,5 +181,17 @@ public class CustomListener implements ITestListener, ISuiteListener, IInvokedMe
     }
 
 
+    private String makeScreenshot() {
+        File scr;
+        try{
+            scr = ((TakesScreenshot) WebDriverThreadLocal.getDriver()).getScreenshotAs(OutputType.FILE);
+            FileUtils.copyFile(scr, new File(path));
+            return path;
+        }
+        catch(Exception ex){
+           return null ;
+        }
+
+    }
 
 }

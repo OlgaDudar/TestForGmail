@@ -11,6 +11,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 @Epic("Regresion Tests")
 @Feature("Work with mail")
+
 public class CheckMailWithoutSubject extends BaseTest {
 
     @Test(description = "negativeTests.SendMail without subject", groups = {"negative"})

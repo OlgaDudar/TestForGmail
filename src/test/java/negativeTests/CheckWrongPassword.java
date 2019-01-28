@@ -9,6 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 @Epic("Regresion Tests")
 @Feature("Check login tests")
+
 public class CheckWrongPassword extends BaseTest
 {
     @Test(threadPoolSize = 1, description = "negativeTests.Login with wrong password", groups = {"negative"})
