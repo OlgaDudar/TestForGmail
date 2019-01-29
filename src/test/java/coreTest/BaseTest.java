@@ -17,7 +17,7 @@ import java.util.Date;
 import static core.DataProperties.getDataProperties;
 import static core.DataProperties.setDataProperties;
 
-@Listeners (CustomListener.class)
+//@Listeners (CustomListener.class)
 
 public class BaseTest {
 

@@ -26,7 +26,6 @@ import java.io.File;
 
 public class CustomListener implements ITestListener, ISuiteListener, IInvokedMethodListener {
 
-   private String path = System.getProperty("user.dir")+"\\screenshots\\"+System.currentTimeMillis()+".png";
 
     @Override
 
@@ -131,14 +130,12 @@ public class CustomListener implements ITestListener, ISuiteListener, IInvokedMe
             case ITestResult.SUCCESS:
 
                 status = "Pass";
-                //makeScreenshot();
 
                 break;
 
             case ITestResult.FAILURE:
 
                 status = "Failed";
-                //makeScreenshot();
 
                 break;
 
@@ -182,9 +179,9 @@ public class CustomListener implements ITestListener, ISuiteListener, IInvokedMe
 
 
     private String makeScreenshot() {
-        File scr;
+        String path = System.getProperty("user.dir")+"\\screenshots\\"+System.currentTimeMillis()+".png";
         try{
-            scr = ((TakesScreenshot) WebDriverThreadLocal.getDriver()).getScreenshotAs(OutputType.FILE);
+            File scr = ((TakesScreenshot) WebDriverThreadLocal.getDriver()).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(scr, new File(path));
             return path;
         }
