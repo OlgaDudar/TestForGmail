@@ -13,9 +13,11 @@ import java.util.concurrent.TimeUnit;
 public class BasePage  {
     protected WebDriver driver;
 
+
     public BasePage(WebDriver dr) {
         driver = dr;
         init();
+
     }
 
     public String getTitle(){

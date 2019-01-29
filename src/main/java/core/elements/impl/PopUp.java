@@ -7,10 +7,6 @@ public class PopUp extends CustomElement {
 
         super(wrappedElement);
     }
-    @Override
-    public boolean isDisplayed(){
 
-        return super.isDisplayed();
-    }
 
 }

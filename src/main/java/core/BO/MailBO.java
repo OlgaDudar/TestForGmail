@@ -2,16 +2,22 @@ package core.BO;
 
 import core.driver.WebDriverThreadLocal;
 import core.model.Message;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.UnhandledAlertException;
+import pages.BasePage;
 import pages.InboxPage;
 import pages.LetterPage;
 import pages.OutBoxPage;
+
+import java.util.Date;
 
 
 public class MailBO {
 
     private InboxPage  inBox;
     private OutBoxPage outBox;
+    private Logger logger = Logger.getLogger(BasePage.class.getName());
+    private Date objDate = new Date();
 
     public MailBO(){
 
@@ -25,12 +31,15 @@ public class MailBO {
         inBox.setSubject(msg.getSubject());
         inBox.setMessage(msg.getMsgBody());
         inBox.sendMail();
+        logger.info("Sent mail "+objDate.toString()+getClass());
+
     }
 
     public void createMessage(Message msg) {
         inBox.createNewMail();
         inBox.setAddress(msg.getToWhom());
         inBox.setSubject(msg.getSubject());
+        logger.info("Create new mail "+objDate.toString()+getClass());
     }
 
     public boolean checkInsertEmoji(){
@@ -64,6 +73,7 @@ public class MailBO {
         outBox.goToOutBox();
         outBox.selectMail(msg);
         outBox.deleteMail(msg);
+        logger.info("Delete message "+objDate.toString()+getClass());
     }
     public boolean deleteMailPopup() {
         return outBox.isDeleteMailPopupIsPresent();
@@ -71,8 +81,8 @@ public class MailBO {
 
     public boolean downloadAttachment(Message msg){
         LetterPage letter = new LetterPage(WebDriverThreadLocal.getDriver());
-//        letter.openLetter(msg);
         letter.DownloadAttachment();
+        logger.info("Download attashment "+objDate.toString()+getClass());
         return true;
     }
 

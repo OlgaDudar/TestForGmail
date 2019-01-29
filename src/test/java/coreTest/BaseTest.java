@@ -1,4 +1,5 @@
 package coreTest;
+import core.CustomListener;
 import core.driver.WebDriverThreadLocal;
 import core.model.Message;
 import core.model.User;
@@ -11,24 +12,29 @@ import org.testng.ITestResult;
 import org.testng.annotations.*;
 
 import java.io.IOException;
+import java.util.Date;
 
 import static core.DataProperties.getDataProperties;
 import static core.DataProperties.setDataProperties;
+
+//@Listeners (CustomListener.class)
 
 public class BaseTest {
 
     protected User user = null;
     protected Message msg;
     protected String pageUrl = null;
-    protected String sys_prop = "system.properties";
-    protected String sub_prop = "subject.properties";
+    private String sys_prop = "system.properties";
+    private String sub_prop = "subject.properties";
     protected User wrongUserToAccount = null;
     protected User wrongUserToPassword = null;
-    static Logger LOG = Logger.getLogger(BaseTest.class.getName());
+    private static Logger logger = Logger.getLogger(BaseTest.class.getName());
+    private Date objDate = new Date();
+
 
     @BeforeSuite(groups = {"positive", "negative"})
     public void init(){
-        LOG.info("INIT START");
+        logger.info("INIT START "+objDate.toString()+getClass());
         System.setProperty("webdriver.chrome.driver", getDataProperties("driverPath", sys_prop));
         pageUrl = getDataProperties("site", sys_prop);
     }
@@ -41,7 +47,7 @@ public class BaseTest {
 
     @BeforeMethod(groups = {"positive", "negative"})
     public void setProp()  {
-        LOG.info("START");
+        logger.info("START BEFORE METHOD "+objDate.toString());
         String sub = RandomStringUtils.random(8, false, true);
         msg = new Message(getDataProperties("sendTo", sys_prop),  sub, "Hello");
         String pageUrl = getDataProperties("site", "system.properties");
@@ -52,14 +58,17 @@ public class BaseTest {
 
     @AfterMethod(groups = {"positive", "negative"})
     public void afterMethod(ITestResult result){
+
         if(ITestResult.FAILURE==result.getStatus()) {
-            LOG.error("TEST FAILED ERROR CUSTOM MESSAGE");
+            logger.error("TEST FAILED "+ objDate.toString()+" "+getClass());
             makeScreenshot();
         }
         if(ITestResult.SKIP==result.getStatus()) {
+            logger.info("TEST SKIPED "+ objDate.toString()+" "+getClass());
             makeScreenshot();
         }
         if(ITestResult.SUCCESS==result.getStatus()) {
+            logger.info("TEST SUCCESS "+ objDate.toString()+" "+getClass());
             makeScreenshot();
         }
         WebDriverThreadLocal.closeDriver();
@@ -102,7 +111,7 @@ public class BaseTest {
     }
 
     @Attachment(value = "Page screenshot", type = "image/png")
-    protected byte[] makeScreenshot() {
+    private byte[] makeScreenshot() {
         try{
             return ((TakesScreenshot) WebDriverThreadLocal.getDriver()).getScreenshotAs(OutputType.BYTES);
         }
@@ -111,12 +120,13 @@ public class BaseTest {
         }
     }
 
-    @AfterSuite()
+    @AfterTest()
     public void runReport(){
         try {
             String projectDir = System.getProperty("user.dir");
-            Process p = Runtime.getRuntime().exec("C:\\allure-commandline-2.9.0\\allure-2.9.0\\bin\\allure.bat generate "+projectDir+"\\target\\allure-results -o "+projectDir+"\\target\\allure-report");
+            Process p = Runtime.getRuntime().exec(".allure\\allure-2.8.1\\bin\\allure.bat generate "+projectDir+"\\target\\allure-results -o "+projectDir+"\\target\\allure-report");
             p.waitFor();
+            logger.info("RUN REPORT "+ objDate.toString());
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {

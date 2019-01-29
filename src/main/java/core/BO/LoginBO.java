@@ -2,7 +2,11 @@ package core.BO;
 
 import core.driver.WebDriverThreadLocal;
 import core.model.User;
+import org.apache.log4j.Logger;
+import pages.BasePage;
 import pages.LoginPage;
+
+import java.util.Date;
 
 import static core.DataProperties.getDataProperties;
 
@@ -10,7 +14,8 @@ public class LoginBO {
     private LoginPage loginPage;
     private boolean wrongAccount = false ;
     private boolean wrongPassword = false;
-
+    private Logger logger = Logger.getLogger(BasePage.class.getName());
+    private Date objDate = new Date();
 
 
     public LoginBO() {
@@ -31,6 +36,7 @@ public class LoginBO {
         if(!loginPage.inputAccount(user.getLogin())) {
             wrongAccount = true;
         }
+        logger.info("Check account "+objDate.toString()+getClass());
     }
 
     public void login (User user){
@@ -42,6 +48,7 @@ public class LoginBO {
         if(!loginPage.inputPassword(user.getPassword())) {
             wrongPassword = true;
         }
+        logger.info("Login to GMail "+objDate.toString()+getClass());
     }
 
 }

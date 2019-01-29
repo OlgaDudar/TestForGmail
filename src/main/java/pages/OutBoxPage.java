@@ -2,6 +2,7 @@ package pages;
 
 import core.driver.WebDriverThreadLocal;
 import core.elements.impl.Button;
+import core.elements.impl.CheckBox;
 import core.elements.impl.PopUp;
 import core.model.Message;
 import io.qameta.allure.Step;
@@ -20,11 +21,11 @@ public class OutBoxPage extends BasePage{
     @FindBy(xpath = "//table//span[@class='bog']")
     private WebElement subject;
     @FindBy(xpath = "//div[@id=':78']")
-    private WebElement ckbSelectMail;
+    private CheckBox ckbSelectMail;
     @FindBy(xpath = "//div[@gh='mtb']//div[@act ='10']")
     private Button deleteMessage;
     @FindBy(xpath = "//div[@class='vh']//span[@class='bAq']")
-    private WebElement popupDeleteMail;
+    private PopUp popupDeleteMail;
     private static String title = "Надіслані - test18.acount18@gmail.com - Gmail";
 
     public OutBoxPage(WebDriver dr) {
@@ -44,7 +45,7 @@ public class OutBoxPage extends BasePage{
 
     @Step("Select mail in Outbox")
     public void selectMail(Message msg){
-        ckbSelectMail.click();
+        ckbSelectMail.check();
     }
 
     @Step("Delete Message")
