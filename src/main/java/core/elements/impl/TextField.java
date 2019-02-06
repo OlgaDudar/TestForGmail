@@ -16,14 +16,8 @@ public class TextField extends CustomElement {
     }
 
     public void type(final String text) {
-        waitForTextField();
+        waitElementIsVisible();
         wrappedElement.sendKeys(text);
     }
-
-    public void waitForTextField(){
-        Wait<WebDriver> wait = new WebDriverWait(WebDriverThreadLocal.getDriver(), 10).ignoring(StaleElementReferenceException.class, ElementNotVisibleException.class);
-        wait.until(ExpectedConditions.visibilityOf(wrappedElement));
-    }
-
 
 }
