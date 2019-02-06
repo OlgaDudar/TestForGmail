@@ -27,7 +27,7 @@ public class LetterPage extends BasePage{
 
     @Step("Search mail with attachment")
     private WebElement getMailWithAttachment(){
-        fromList.waitForList();
+        fromList.waitLoadInBox();
         return fromList.findElement(By.xpath(xPathForMail));
     }
 

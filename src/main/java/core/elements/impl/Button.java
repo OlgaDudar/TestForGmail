@@ -15,12 +15,8 @@ public class Button extends CustomElement {
     }
 
     public void click(){
-        waitForButton();
+        waitElementIsVisible();
         wrappedElement.click();
-    }
-    private void waitForButton(){
-        Wait<WebDriver> wait = new WebDriverWait(WebDriverThreadLocal.getDriver(), 10).ignoring(StaleElementReferenceException.class, ElementNotVisibleException.class);
-        wait.until(ExpectedConditions.visibilityOf(wrappedElement));
     }
 
 }
