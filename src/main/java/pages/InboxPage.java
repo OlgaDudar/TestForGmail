@@ -1,6 +1,5 @@
 package pages;
 
-import core.driver.WebDriverThreadLocal;
 import core.elements.impl.Button;
 import core.elements.impl.PopUp;
 import core.elements.impl.TextField;
@@ -8,9 +7,6 @@ import io.qameta.allure.Step;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class InboxPage extends BasePage{
@@ -88,10 +84,7 @@ public class InboxPage extends BasePage{
 
     @Step("Check that message about sent mail is appeared")
     public boolean sendMessagePopupDisplayed() {
-        Wait<WebDriver> wait = new WebDriverWait(WebDriverThreadLocal.getDriver(), 10)
-                .ignoring(StaleElementReferenceException.class, ElementNotVisibleException.class);
-        wait.until(ExpectedConditions.textToBePresentInElement(popUpText, "Лист надіслано."));
-        return popUp.isDisplayed();
+        return waitTextIsVisibleInElement(popUpText, "Лист надіслано.");
     }
 
     public boolean warningMessagesDisplayed() {
