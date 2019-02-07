@@ -25,11 +25,6 @@ abstract class CustomElement implements Element {
         return wrappedElement.isEnabled();
     }
 
-    public boolean waitTextIsVisibleInElement(String text){
-        Wait<WebDriver> wait = new WebDriverWait(WebDriverThreadLocal.getDriver(), 10)
-                .ignoring(StaleElementReferenceException.class, ElementNotVisibleException.class);
-        return wait.until(ExpectedConditions.textToBePresentInElement(wrappedElement, text));
-    }
 
     protected void waitElementIsVisible(){
         Wait<WebDriver> wait = new WebDriverWait(WebDriverThreadLocal.getDriver(), 10).ignoring(StaleElementReferenceException.class, ElementNotVisibleException.class);

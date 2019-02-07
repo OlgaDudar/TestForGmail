@@ -35,12 +35,7 @@ public class OutBoxPage extends BasePage{
     @Step("Click on Outbox button")
     public void goToOutBox(){
         outBox.click();
-        waitOutbox();
-    }
-
-    private void waitOutbox(){
-        Wait<WebDriver> wait = new WebDriverWait(WebDriverThreadLocal.getDriver(), 10).ignoring(StaleElementReferenceException.class, ElementNotVisibleException.class);
-        wait.until(ExpectedConditions.titleContains(title));
+        waitOutbox(title);
     }
 
     @Step("Select mail in Outbox")
